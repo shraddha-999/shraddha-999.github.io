@@ -19,13 +19,11 @@
     .wrapper{max-width:1040px; margin:0 auto; padding:24px}
     header.site{display:flex; gap:20px; align-items:center; justify-content:space-between; flex-wrap:wrap; padding:20px 24px; background:linear-gradient(180deg, rgba(124,156,255,.12), transparent); border:1px solid #23263a; border-radius:14px; position:sticky; top:12px; backdrop-filter: blur(8px); z-index:20}
     .brand{display:flex; gap:14px; align-items:center}
-    .avatar{width:52px; height:52px; border-radius:50%; background:var(--brand-2); display:inline-block}
     .title h1{font-size:20px; margin:0}
     .title p{margin:2px 0 0; color:var(--muted); font-size:14px}
     nav ul{display:flex; gap:16px; list-style:none; padding:0; margin:0; flex-wrap:wrap}
     nav a{display:inline-block; padding:8px 12px; border-radius:10px; color:var(--text)}
     nav a:hover{background:var(--card)}
-
     .hero{margin:24px 0 28px; padding:28px; border-radius:16px; background:linear-gradient(135deg, rgba(124,156,255,.16), rgba(165,124,255,.18)); border:1px solid #23263a}
     .hero h2{font-size:28px; margin:0 0 8px}
     .hero p{margin:0; color:var(--muted)}
@@ -33,32 +31,25 @@
     .btn{border:1px solid #2a2d43; background:var(--card); color:var(--text); padding:10px 14px; border-radius:12px; font-weight:600}
     .btn.primary{background:var(--brand); color:#0b1020; border-color:transparent}
     .btn.ghost{background:transparent}
-
     .grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:18px}
     section.card{background:var(--card); border:1px solid #23263a; border-radius:16px; padding:22px}
     section.card h3{margin:0 0 12px; font-size:18px}
-
     .about{grid-column:span 12}
     .experience{grid-column:span 7}
     .skills{grid-column:span 5}
     .projects{grid-column:span 12}
     .education{grid-column:span 12}
-
     .xp-item{padding:14px; border-radius:12px; background:var(--card-2); border:1px solid #23263a; margin-bottom:12px}
     .xp-item h4{margin:0 0 6px; font-size:16px}
     .xp-item .meta{color:var(--muted); font-size:13px}
     .xp-item ul{margin:8px 0 0 18px}
-
     .skill-tags{display:flex; flex-wrap:wrap; gap:8px}
     .tag{background:#22253a; color:#dfe6ff; border:1px solid #2a2d43; padding:6px 10px; border-radius:999px; font-size:13px}
-
     .project-list{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px}
     .project{padding:14px; border-radius:12px; background:var(--card-2); border:1px solid #23263a}
     .project h4{margin:0 0 6px}
     .project p{margin:0; color:var(--muted)}
-
     footer.site{margin:26px 0; color:var(--muted); text-align:center}
-
     @media (max-width: 840px){
       .experience{grid-column:span 12}
       .skills{grid-column:span 12}
@@ -69,7 +60,6 @@
   <div class="wrapper">
     <header class="site" role="banner">
       <div class="brand">
-        <span class="avatar" aria-hidden="true"></span>
         <div class="title">
           <h1>Shraddha Kesarwani</h1>
           <p>Software Engineer • 2+ years • Ex-Vegrow</p>
@@ -77,33 +67,30 @@
       </div>
       <nav aria-label="Primary">
         <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#education">Education</a></li>
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#education">Education</a>
         </ul>
       </nav>
     </header>
-
     <section class="hero">
       <h2>Building reliable, scalable products for the web</h2>
       <p>Full-stack engineer with hands-on experience delivering features end-to-end, CI/CD, and cloud deployments. Previously at Vegrow, focusing on platform quality and efficiency.</p>
       <div class="actions">
-        <a class="btn primary" href="ShraddhaKesarwaniResume-1.pdf" download>Download Resume</a>
+        <a class="btn primary" download href="resume.pdf">Download Resume</a>
         <a class="btn ghost" href="mailto:shraddha@example.com">Contact</a>
-        <a class="btn" href="https://github.com/shraddha-999" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn" href="https://linkedin.com/in/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/shraddha-999" rel="noopener" target="_blank">GitHub</a>
+        <a class="btn" href="https://linkedin.com/in/" rel="noopener" target="_blank">LinkedIn</a>
       </div>
     </section>
-
     <div class="grid">
-      <section id="about" class="card about">
+      <section class="card about" id="about">
         <h3>About Me</h3>
         <p>I am a software engineer passionate about building clean, performant web applications. At Vegrow, I contributed to engineering initiatives that improved reliability and developer velocity. I enjoy working across the stack and collaborating closely with product and design.</p>
       </section>
-
-      <section id="experience" class="card experience">
+      <section class="card experience" id="experience">
         <h3>Experience</h3>
         <div class="xp-item">
           <h4>Software Engineer • Vegrow</h4>
@@ -114,7 +101,7 @@
             <li>Built and optimized APIs and services on AWS, leveraging Lambda, S3, and EC2.</li>
             <li>Collaborated with cross‑functional teams to define requirements, scope, and milestones.</li>
           </ul>
-          <div class="skill-tags" aria-label="Key skills">
+          <div aria-label="Key skills" class="skill-tags">
             <span class="tag">JavaScript</span>
             <span class="tag">Python</span>
             <span class="tag">HTML</span>
@@ -126,8 +113,7 @@
           </div>
         </div>
       </section>
-
-      <section id="skills" class="card skills">
+      <section class="card skills" id="skills">
         <h3>Skills</h3>
         <div class="skill-tags">
           <span class="tag">HTML</span>
@@ -143,8 +129,7 @@
           <span class="tag">Testing</span>
         </div>
       </section>
-
-      <section id="projects" class="card projects">
+      <section class="card projects" id="projects">
         <h3>Projects</h3>
         <div class="project-list">
           <div class="project">
@@ -161,15 +146,13 @@
           </div>
         </div>
       </section>
-
-      <section id="education" class="card education">
+      <section class="card education" id="education">
         <h3>Education</h3>
         <p>Bachelor's Degree • Computer Science/Engineering</p>
       </section>
     </div>
-
     <footer class="site" role="contentinfo">
-      <p>© 2025 Shraddha Kesarwani. Built with HTML/CSS. Hosted on GitHub Pages.</p>
+      © 2025 Shraddha Kesarwani. Built with HTML/CSS. Hosted on GitHub Pages.
     </footer>
   </div>
 </body>
