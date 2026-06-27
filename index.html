@@ -1,703 +1,793 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shraddha Kesarwani — Backend Software Engineer</title>
-  <meta name="description" content="Backend Software Engineer with 3+ years building distributed systems, financial platforms, and AI-powered document services. Ruby on Rails, Python FastAPI, Go, React." />
-  <meta property="og:title" content="Shraddha Kesarwani — Backend Software Engineer" />
-  <meta property="og:description" content="Building distributed systems, financial platforms, and AI-powered document services at production scale." />
-  <meta property="og:type" content="website" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <style>
-    /* ── TOKENS ──────────────────────────────────────── */
-    :root {
-      --bg:         #07080f;
-      --bg2:        #0d1117;
-      --surface:    #111827;
-      --card:       #161d2e;
-      --card-h:     #1a2236;
-      --border:     rgba(99,102,241,.18);
-      --border2:    rgba(255,255,255,.07);
-      --text:       #e2e8f0;
-      --text2:      #94a3b8;
-      --text3:      #64748b;
-      --brand:      #6366f1;
-      --brand2:     #818cf8;
-      --violet:     #8b5cf6;
-      --teal:       #14b8a6;
-      --green:      #10b981;
-      --amber:      #f59e0b;
-      --rose:       #f43f5e;
-      --glow:       rgba(99,102,241,.22);
-      --nav-h:      64px;
-    }
-    [data-theme="light"] {
-      --bg:         #f8faff;
-      --bg2:        #eef2ff;
-      --surface:    #ffffff;
-      --card:       #f0f4fb;
-      --card-h:     #e6edf8;
-      --border:     rgba(99,102,241,.2);
-      --border2:    rgba(0,0,0,.08);
-      --text:       #0f172a;
-      --text2:      #475569;
-      --text3:      #94a3b8;
-      --brand:      #4f46e5;
-      --brand2:     #6366f1;
-      --violet:     #7c3aed;
-      --teal:       #0d9488;
-      --green:      #059669;
-      --glow:       rgba(99,102,241,.12);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shraddha Kesarwani — Backend Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root[data-theme="dark"] {
+    --bg: #080b14;
+    --bg2: #0d1117;
+    --bg3: #161b27;
+    --bg4: #1c2333;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #e6edf3;
+    --text2: #8b949e;
+    --text3: #6e7681;
+    --accent: #58a6ff;
+    --accent2: #3fb950;
+    --accent3: #f78166;
+    --accent4: #d2a8ff;
+    --accent5: #79c0ff;
+    --glow: rgba(88,166,255,0.15);
+    --code-bg: #0d1117;
+    --tag-bg: rgba(88,166,255,0.1);
+    --tag-text: #58a6ff;
+    --card-bg: #0d1117;
+    --nav-bg: rgba(8,11,20,0.88);
+    --shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 8px 32px rgba(0,0,0,0.4);
+    --shadow-hover: 0 0 0 1px rgba(88,166,255,0.3), 0 16px 48px rgba(0,0,0,0.5);
+  }
+  :root[data-theme="light"] {
+    --bg: #f6f8fa;
+    --bg2: #ffffff;
+    --bg3: #f0f3f6;
+    --bg4: #e8ecf0;
+    --border: rgba(0,0,0,0.08);
+    --border2: rgba(0,0,0,0.14);
+    --text: #1f2328;
+    --text2: #57606a;
+    --text3: #6e7781;
+    --accent: #0969da;
+    --accent2: #1a7f37;
+    --accent3: #cf222e;
+    --accent4: #8250df;
+    --accent5: #0550ae;
+    --glow: rgba(9,105,218,0.08);
+    --code-bg: #f0f3f6;
+    --tag-bg: rgba(9,105,218,0.1);
+    --tag-text: #0969da;
+    --card-bg: #ffffff;
+    --nav-bg: rgba(246,248,250,0.88);
+    --shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.08);
+    --shadow-hover: 0 0 0 1px rgba(9,105,218,0.2), 0 8px 32px rgba(0,0,0,0.12);
+  }
 
-    /* ── RESET ───────────────────────────────────────── */
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
-    a{color:var(--brand2);text-decoration:none;transition:color .2s}
-    a:hover{color:var(--text)}
-    ul{list-style:none}
-    button{cursor:pointer;border:none;background:none;font-family:inherit}
-    ::-webkit-scrollbar{width:5px}
-    ::-webkit-scrollbar-track{background:var(--bg)}
-    ::-webkit-scrollbar-thumb{background:var(--border);border-radius:99px}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+    transition: background 0.3s, color 0.3s;
+    overflow-x: hidden;
+  }
 
-    /* ── LAYOUT ──────────────────────────────────────── */
-    .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
-    .section{padding:96px 0}
-    .section-alt{background:var(--bg2)}
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: var(--nav-bg);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border-bottom: 1px solid var(--border);
+    padding: 0 max(24px, calc((100vw - 1120px)/2));
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .nav-logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600; font-size: 14px;
+    color: var(--accent); text-decoration: none; letter-spacing: 0.02em;
+  }
+  .nav-logo span { color: var(--text2); }
+  .nav-links { display: flex; align-items: center; gap: 0; list-style: none; }
+  .nav-links a {
+    color: var(--text2); text-decoration: none;
+    font-size: 13px; font-weight: 500;
+    padding: 6px 14px; border-radius: 6px;
+    transition: color 0.15s, background 0.15s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--text); background: var(--bg3); }
+  .theme-btn {
+    background: var(--bg3); border: 1px solid var(--border2);
+    color: var(--text2); width: 32px; height: 32px;
+    border-radius: 6px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; transition: all 0.15s; flex-shrink: 0;
+  }
+  .theme-btn:hover { color: var(--text); border-color: var(--accent); }
 
-    /* ── TYPOGRAPHY HELPERS ──────────────────────────── */
-    .label{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand2);margin-bottom:14px}
-    .label::before{content:'';display:block;width:18px;height:2px;background:var(--brand);border-radius:2px}
-    .h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;line-height:1.12;letter-spacing:-.025em;color:var(--text);margin-bottom:14px}
-    .sub{font-size:1.05rem;color:var(--text2);max-width:560px;line-height:1.75}
-    .mono{font-family:'JetBrains Mono','Fira Code',monospace}
+  /* LAYOUT */
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 96px 0; }
 
-    /* ── TAGS ────────────────────────────────────────── */
-    .tag{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:500;background:rgba(99,102,241,.1);color:var(--brand2);border:1px solid rgba(99,102,241,.2);white-space:nowrap}
-    .tag.t{background:rgba(20,184,166,.1);color:var(--teal);border-color:rgba(20,184,166,.2)}
-    .tag.g{background:rgba(16,185,129,.1);color:var(--green);border-color:rgba(16,185,129,.2)}
-    .tag.v{background:rgba(139,92,246,.1);color:var(--violet);border-color:rgba(139,92,246,.2)}
-    .tag.a{background:rgba(245,158,11,.1);color:var(--amber);border-color:rgba(245,158,11,.2)}
-    .tags{display:flex;flex-wrap:wrap;gap:7px}
+  /* HERO */
+  #hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 0 24px; position: relative; overflow: hidden;
+  }
+  #hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 60% 30%, rgba(88,166,255,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1120px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 64px; align-items: center; padding: 80px 0;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--tag-bg); border: 1px solid rgba(88,166,255,0.2);
+    color: var(--tag-text); font-size: 12px; font-weight: 500;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 5px 12px; border-radius: 20px; margin-bottom: 24px;
+  }
+  .hero-badge::before {
+    content: ''; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent2); animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+  .hero-name {
+    font-size: clamp(36px, 5vw, 56px); font-weight: 700;
+    line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 12px;
+  }
+  .hero-name .highlight { color: var(--accent); }
+  .hero-title { font-size: clamp(16px, 2vw, 20px); color: var(--text2); font-weight: 400; margin-bottom: 20px; }
+  .hero-desc { color: var(--text2); font-size: 15px; line-height: 1.75; max-width: 460px; margin-bottom: 36px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 20px; border-radius: 8px;
+    font-size: 14px; font-weight: 500; text-decoration: none;
+    transition: all 0.15s; cursor: pointer; border: none;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
+  .btn-ghost { background: var(--bg3); color: var(--text); border: 1px solid var(--border2); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
 
-    /* ── BUTTONS ─────────────────────────────────────── */
-    .btn{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;transition:all .2s;border:1px solid transparent;white-space:nowrap}
-    .btn-p{background:var(--brand);color:#fff}
-    .btn-p:hover{background:var(--brand2);color:#fff;box-shadow:0 0 22px var(--glow);transform:translateY(-1px)}
-    .btn-o{background:transparent;color:var(--text2);border-color:var(--border2)}
-    .btn-o:hover{background:var(--surface);color:var(--text);border-color:var(--border)}
+  /* code window */
+  .hero-code {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); font-size: 13px;
+  }
+  .code-bar {
+    background: var(--bg3); border-bottom: 1px solid var(--border);
+    padding: 12px 16px; display: flex; align-items: center; gap: 12px;
+  }
+  .code-dots { display: flex; gap: 6px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; } .dot-y { background: #febc2e; } .dot-g { background: #28c840; }
+  .code-title { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text3); flex: 1; text-align: center; }
+  .code-body { padding: 20px; font-family: 'JetBrains Mono', monospace; line-height: 1.7; overflow-x: auto; }
+  .c-dim   { color: var(--text3); }
+  .c-kw    { color: var(--accent4); }
+  .c-fn    { color: var(--accent5); }
+  .c-str   { color: var(--accent2); }
+  .c-num   { color: var(--accent3); }
+  .c-type  { color: #ffa657; }
+  .c-cmt   { color: var(--text3); font-style: italic; }
+  .c-acc   { color: var(--accent); }
 
-    /* ── REVEAL ──────────────────────────────────────── */
-    .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
-    .reveal.vis{opacity:1;transform:translateY(0)}
-    .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+  /* stats */
+  .stats-strip { display: flex; gap: 32px; flex-wrap: wrap; padding: 32px 0 0; }
+  .stat-value { font-size: 28px; font-weight: 700; color: var(--text); font-family: 'JetBrains Mono', monospace; line-height: 1; }
+  .stat-value .accent { color: var(--accent); }
+  .stat-label { font-size: 12px; color: var(--text3); margin-top: 4px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
 
-    /* ── DOT GRID ────────────────────────────────────── */
-    .grid-bg{position:absolute;inset:0;z-index:0;background-image:radial-gradient(circle,rgba(99,102,241,.13) 1px,transparent 1px);background-size:32px 32px;mask-image:radial-gradient(ellipse 80% 70% at 50% 0%,black 30%,transparent 100%)}
-    [data-theme="light"] .grid-bg{background-image:radial-gradient(circle,rgba(99,102,241,.07) 1px,transparent 1px)}
+  /* SECTION HEADER */
+  .section-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+  .section-title { font-size: clamp(24px, 3vw, 36px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 16px; }
+  .section-sub { font-size: 16px; color: var(--text2); max-width: 560px; line-height: 1.7; margin-bottom: 56px; }
 
-    /* ── NAV ─────────────────────────────────────────── */
-    #nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;background:rgba(7,8,15,.86);backdrop-filter:blur(16px) saturate(1.4);border-bottom:1px solid var(--border2);transition:background .3s}
-    [data-theme="light"] #nav{background:rgba(248,250,255,.9)}
-    .nav-in{width:100%;max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .nav-logo{font-size:15px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:10px}
-    .logo-sq{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--brand),var(--violet));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;flex-shrink:0}
-    .nav-links{display:flex;align-items:center;gap:2px}
-    .nav-links a{padding:7px 13px;border-radius:8px;font-size:14px;font-weight:500;color:var(--text2);transition:all .2s}
-    .nav-links a:hover,.nav-links a.active{color:var(--text);background:var(--surface)}
-    .nav-right{display:flex;align-items:center;gap:8px}
-    #tbtn{width:36px;height:36px;border-radius:8px;border:1px solid var(--border2);color:var(--text2);display:flex;align-items:center;justify-content:center;font-size:15px;transition:all .2s}
-    #tbtn:hover{background:var(--surface);color:var(--text)}
-    #hbtn{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;padding:6px;border:1px solid var(--border2);border-radius:8px}
-    #hbtn span{display:block;height:2px;background:var(--text2);border-radius:2px;transition:all .25s}
-    #mmenu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--border2);padding:12px 20px;z-index:99;flex-direction:column;gap:2px}
-    #mmenu.open{display:flex}
-    #mmenu a{padding:11px 14px;border-radius:8px;font-size:15px;font-weight:500;color:var(--text2)}
-    #mmenu a:hover{background:var(--surface);color:var(--text)}
+  /* ABOUT */
+  #about { background: var(--bg2); }
+  .about-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .pillar-card {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .pillar-card:hover { border-color: var(--border2); box-shadow: var(--shadow); }
+  .pillar-icon { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 16px; }
+  .pillar-card:nth-child(1) .pillar-icon { background: rgba(88,166,255,0.1); }
+  .pillar-card:nth-child(2) .pillar-icon { background: rgba(63,185,80,0.1); }
+  .pillar-card:nth-child(3) .pillar-icon { background: rgba(210,168,255,0.1); }
+  .pillar-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .pillar-desc { font-size: 14px; color: var(--text2); line-height: 1.65; }
 
-    /* ── HERO ────────────────────────────────────────── */
-    #hero{position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center;padding-top:var(--nav-h)}
-    .hero-in{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-    .hero-glow{position:absolute;top:5%;left:-15%;z-index:0;width:650px;height:650px;border-radius:50%;background:radial-gradient(ellipse,rgba(99,102,241,.14) 0%,transparent 70%);pointer-events:none}
-    .badge{display:inline-flex;align-items:center;gap:7px;padding:5px 13px;border-radius:99px;font-size:12px;font-weight:600;background:rgba(16,185,129,.1);color:var(--green);border:1px solid rgba(16,185,129,.22);margin-bottom:22px}
-    .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pdot 2s ease-in-out infinite}
-    @keyframes pdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.75)}}
-    .hero-name{font-size:clamp(2.5rem,5.5vw,3.9rem);font-weight:800;line-height:1.06;letter-spacing:-.03em;background:linear-gradient(140deg,var(--text) 45%,var(--brand2) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
-    .hero-role{font-size:clamp(1rem,2vw,1.25rem);font-weight:500;color:var(--text2);margin-bottom:20px}
-    .hero-role span{color:var(--brand2)}
-    .hero-desc{font-size:1.05rem;color:var(--text2);line-height:1.78;max-width:490px;margin-bottom:30px}
-    .stats-row{display:flex;gap:0;background:var(--surface);border:1px solid var(--border2);border-radius:14px;overflow:hidden;margin-bottom:32px}
-    .stat{flex:1;padding:18px 20px;display:flex;flex-direction:column;border-right:1px solid var(--border2)}
-    .stat:last-child{border-right:none}
-    .stat .v{font-size:1.45rem;font-weight:800;color:var(--text)}
-    .stat .v em{color:var(--brand2);font-style:normal}
-    .stat .l{font-size:10.5px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-top:2px}
-    .hero-btns{display:flex;gap:9px;flex-wrap:wrap}
+  /* EXPERIENCE */
+  #experience { background: var(--bg); }
+  .exp-wrap { display: grid; grid-template-columns: 260px 1fr; gap: 48px; }
+  .exp-company { position: sticky; top: 80px; height: fit-content; }
+  .company-logo-area { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+  .company-name { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+  .company-tagline { font-size: 13px; color: var(--text3); line-height: 1.5; margin-bottom: 16px; }
+  .company-meta { display: flex; flex-direction: column; gap: 6px; }
+  .company-meta-row { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text2); }
+  .commit-pill { display: inline-flex; align-items: center; gap: 6px; background: var(--tag-bg); border: 1px solid rgba(88,166,255,0.15); color: var(--tag-text); font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 20px; margin-top: 8px; }
+  .exp-items { display: flex; flex-direction: column; gap: 0; }
+  .exp-item { position: relative; padding: 0 0 40px 28px; border-left: 1px solid var(--border2); }
+  .exp-item:last-child { border-left-color: transparent; padding-bottom: 0; }
+  .exp-item::before { content: ''; position: absolute; left: -4px; top: 6px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); }
+  .exp-period { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .exp-role { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .exp-body { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 12px; }
+  .tech-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { background: var(--tag-bg); color: var(--tag-text); font-size: 11px; font-weight: 500; font-family: 'JetBrains Mono', monospace; padding: 3px 9px; border-radius: 4px; border: 1px solid rgba(88,166,255,0.15); }
+  .tag.green { background: rgba(63,185,80,0.08); color: var(--accent2); border-color: rgba(63,185,80,0.15); }
+  .tag.purple { background: rgba(210,168,255,0.08); color: var(--accent4); border-color: rgba(210,168,255,0.15); }
+  .tag.orange { background: rgba(255,166,87,0.08); color: #ffa657; border-color: rgba(255,166,87,0.15); }
+  .tag.red { background: rgba(247,129,102,0.08); color: var(--accent3); border-color: rgba(247,129,102,0.15); }
 
-    /* ── CODE WINDOW ─────────────────────────────────── */
-    .cwin{background:#090d1a;border:1px solid rgba(99,102,241,.22);border-radius:16px;overflow:hidden;box-shadow:0 28px 80px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.04)}
-    .cbar{display:flex;align-items:center;gap:7px;padding:12px 16px;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.06)}
-    .cd{width:12px;height:12px;border-radius:50%}
-    .cd.r{background:#ff5f57}.cd.y{background:#febc2e}.cd.g{background:#28c840}
-    .cf{margin-left:8px;font-size:12px;font-weight:500;color:#4b5563;font-family:'JetBrains Mono',monospace}
-    .cbody{padding:20px}
-    .cbody pre{font-family:'JetBrains Mono','Fira Code',monospace;font-size:12.5px;line-height:1.88;white-space:pre;overflow-x:auto}
-    .cc{color:#374151}.cp{color:var(--teal);font-weight:600}.ck{color:var(--brand2)}.cv{color:#86efac}.cs{color:#fca5a5}.cn{color:#fbbf24}.cb{color:var(--teal)}.cok{color:var(--green);font-weight:700}.cm{color:#1f2937}
+  /* PROJECTS */
+  #projects { background: var(--bg2); }
+  .featured-project {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 16px; padding: 36px; margin-bottom: 24px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 40px; align-items: start;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .featured-project::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent4)); }
+  .featured-project:hover { border-color: var(--border2); box-shadow: var(--shadow-hover); }
+  .proj-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .proj-label::after { content: ''; flex: 1; height: 1px; background: var(--border2); max-width: 80px; }
+  .proj-title { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .proj-sub { font-size: 13px; color: var(--text3); font-family: 'JetBrains Mono', monospace; margin-bottom: 14px; }
+  .proj-desc { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 20px; }
+  .proj-points { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+  .proj-points li { font-size: 13px; color: var(--text2); display: flex; gap: 10px; align-items: flex-start; line-height: 1.6; }
+  .proj-points li::before { content: '▸'; color: var(--accent); flex-shrink: 0; margin-top: 1px; font-size: 11px; }
+  .proj-links { display: flex; gap: 10px; flex-wrap: wrap; }
+  .proj-link { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: var(--text2); text-decoration: none; padding: 5px 12px; border: 1px solid var(--border2); border-radius: 6px; transition: all 0.15s; }
+  .proj-link:hover { color: var(--accent); border-color: var(--accent); }
+  .proj-code-block { background: var(--code-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .pcb-header { background: var(--bg3); border-bottom: 1px solid var(--border); padding: 10px 16px; display: flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text3); }
+  .pcb-lang-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .pcb-body { padding: 18px; font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.75; overflow-x: auto; }
 
-    /* ── ABOUT PILLARS ───────────────────────────────── */
-    .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
-    .pillar{background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:28px;transition:all .25s}
-    .pillar:hover{border-color:var(--border);transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.2)}
-    .pillar-icon{width:44px;height:44px;border-radius:12px;margin-bottom:18px;display:flex;align-items:center;justify-content:center;font-size:20px}
-    .pi-b{background:rgba(99,102,241,.14)}.pi-t{background:rgba(20,184,166,.14)}.pi-v{background:rgba(139,92,246,.14)}
-    .pillar h3{font-size:15.5px;font-weight:700;color:var(--text);margin-bottom:9px}
-    .pillar p{font-size:13.5px;color:var(--text2);line-height:1.7;margin-bottom:14px}
+  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .proj-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: border-color 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
+  .proj-card:hover { border-color: var(--border2); box-shadow: var(--shadow); }
+  .proj-card-icon { font-size: 24px; margin-bottom: 14px; }
+  .proj-card-lang { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .proj-card-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.01em; }
+  .proj-card-desc { font-size: 13px; color: var(--text2); line-height: 1.65; flex: 1; margin-bottom: 16px; }
+  .proj-card-footer { display: flex; gap: 6px; flex-wrap: wrap; }
 
-    /* ── EXPERIENCE ──────────────────────────────────── */
-    .timeline{position:relative;margin-top:48px}
-    .timeline::before{content:'';position:absolute;left:19px;top:8px;bottom:40px;width:2px;background:linear-gradient(to bottom,var(--brand),transparent)}
-    .xp{position:relative;padding-left:58px}
-    .xp-dot{position:absolute;left:10px;top:24px;width:20px;height:20px;border-radius:50%;background:var(--brand);border:3px solid var(--bg);box-shadow:0 0 0 2px var(--brand),0 0 18px var(--glow)}
-    .xp-card{background:var(--card);border:1px solid var(--border2);border-radius:18px;padding:34px}
-    .xp-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:6px;flex-wrap:wrap}
-    .xp-co{font-size:.95rem;font-weight:700;color:var(--brand2);margin-bottom:3px}
-    .xp-role{font-size:1.25rem;font-weight:800;color:var(--text)}
-    .xp-meta{font-size:13px;color:var(--text3);margin-bottom:22px}
-    .xp-period{display:inline-flex;align-items:center;padding:5px 13px;border-radius:8px;font-size:13px;font-weight:500;background:var(--surface);color:var(--text2);border:1px solid var(--border2);white-space:nowrap;flex-shrink:0}
-    .impact-box{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.15);border-radius:12px;padding:18px 22px;margin-bottom:22px}
-    .impact-box h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:12px}
-    .impact-row{display:flex;gap:28px;flex-wrap:wrap}
-    .metric .v{font-size:1.45rem;font-weight:800;color:var(--text)}
-    .metric .l{font-size:10.5px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em}
-    .xp-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:22px}
-    .xp-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:12px}
-    .xp-ul{display:flex;flex-direction:column;gap:10px}
-    .xp-ul li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text2);line-height:1.65}
-    .xp-ul li::before{content:'';display:block;width:6px;height:6px;border-radius:50%;background:var(--brand);margin-top:8px;flex-shrink:0}
-    .xp-ul li strong{color:var(--text);font-weight:600}
+  /* SKILLS */
+  #skills { background: var(--bg); }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .skill-group { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: border-color 0.2s; }
+  .skill-group:hover { border-color: var(--border2); }
+  .skill-group-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text3); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .skill-group-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .skill-items { display: flex; flex-direction: column; gap: 10px; }
+  .skill-item { display: flex; align-items: center; justify-content: space-between; }
+  .skill-name { font-size: 13px; color: var(--text2); font-weight: 500; }
+  .skill-bar-wrap { flex: 1; max-width: 100px; height: 3px; background: var(--bg4); border-radius: 3px; margin-left: 12px; overflow: hidden; }
+  .skill-bar { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--accent), var(--accent5)); transform: scaleX(0); transform-origin: left; transition: transform 0.8s ease; }
+  .skill-item.visible .skill-bar { transform: scaleX(1); }
 
-    /* ── PROJECTS ────────────────────────────────────── */
-    .feat{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:38px;margin-top:48px;margin-bottom:20px;position:relative;overflow:hidden;transition:border-color .25s}
-    .feat:hover{border-color:var(--border)}
-    .feat::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--brand),var(--violet),var(--teal))}
-    .feat-in{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
-    .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .pcard{background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:26px;display:flex;flex-direction:column;transition:all .25s}
-    .pcard:hover{border-color:var(--border);transform:translateY(-3px);box-shadow:0 14px 36px rgba(0,0,0,.2)}
-    .pstatus{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:99px;font-size:11px;font-weight:600;margin-bottom:13px;width:fit-content}
-    .ps-open{background:rgba(16,185,129,.1);color:var(--green);border:1px solid rgba(16,185,129,.2)}
-    .ps-prod{background:rgba(99,102,241,.1);color:var(--brand2);border:1px solid rgba(99,102,241,.2)}
-    .ps-dot{width:6px;height:6px;border-radius:50%}
-    .ps-open .ps-dot{background:var(--green)}.ps-prod .ps-dot{background:var(--brand)}
-    .ptitle{font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:7px}
-    .ptitle-lg{font-size:1.5rem;font-weight:800;color:var(--text);margin-bottom:8px}
-    .pdesc{font-size:13.5px;color:var(--text2);margin-bottom:18px;line-height:1.65}
-    .pchallenge{background:var(--surface);border-radius:10px;padding:14px 16px;margin-bottom:12px;border-left:3px solid var(--amber)}
-    .pchallenge h5{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--amber);margin-bottom:5px}
-    .psolution{background:var(--surface);border-radius:10px;padding:14px 16px;margin-bottom:18px;border-left:3px solid var(--green)}
-    .psolution h5{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:5px}
-    .pchallenge p,.psolution p{font-size:13px;color:var(--text2);line-height:1.65}
-    .plinks{display:flex;gap:9px;margin-top:auto;padding-top:18px;flex-wrap:wrap}
-    .plink{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border-radius:8px;font-size:13px;font-weight:600;transition:all .2s;border:1px solid var(--border2);color:var(--text2);background:var(--surface)}
-    .plink:hover{border-color:var(--border);color:var(--text)}
-    .plink-p{background:var(--brand);color:#fff;border-color:transparent}
-    .plink-p:hover{background:var(--brand2);color:#fff}
-    .arch-box{background:var(--surface);border:1px solid var(--border2);border-radius:14px;padding:22px}
-    .arch-box h5{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:16px}
-    .arch-item{display:flex;align-items:flex-start;gap:11px;margin-bottom:11px}
-    .arch-item:last-child{margin-bottom:0}
-    .arch-ic{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
-    .arch-ic.b{background:rgba(99,102,241,.14)}.arch-ic.t{background:rgba(20,184,166,.14)}.arch-ic.v{background:rgba(139,92,246,.14)}.arch-ic.g{background:rgba(16,185,129,.14)}
-    .arch-item p{font-size:13px;color:var(--text2);line-height:1.6}
-    .arch-item p strong{color:var(--text)}
+  /* CONTACT */
+  #contact { background: var(--bg2); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .contact-links { display: flex; flex-direction: column; gap: 12px; }
+  .contact-link { display: flex; align-items: center; gap: 14px; color: var(--text2); text-decoration: none; font-size: 15px; padding: 14px 18px; background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; transition: all 0.15s; }
+  .contact-link:hover { color: var(--text); border-color: var(--accent); background: var(--bg4); transform: translateX(4px); }
+  .contact-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--tag-bg); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .contact-text strong { display: block; font-size: 13px; font-weight: 600; color: var(--text); }
+  .contact-text span { font-size: 12px; color: var(--text3); }
 
-    /* ── SKILLS ──────────────────────────────────────── */
-    .sg{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:48px}
-    .sgroup{background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:22px}
-    .sgroup h3{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--text3);margin-bottom:14px;display:flex;align-items:center;gap:7px}
-    .sgroup h3::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--brand);flex-shrink:0}
-    .stags{display:flex;flex-wrap:wrap;gap:6px}
-    .stag{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:7px;font-size:12.5px;font-weight:500;background:var(--surface);color:var(--text2);border:1px solid var(--border2);transition:all .2s}
-    .stag:hover{border-color:var(--border);color:var(--text)}
-    .stag img{width:14px;height:14px;object-fit:contain}
+  /* FOOTER */
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 12px; color: var(--text3); font-family: 'JetBrains Mono', monospace; }
+  footer a { color: var(--accent); text-decoration: none; }
 
-    /* ── CONTACT ─────────────────────────────────────── */
-    #contact{text-align:center}
-    .ccard{max-width:600px;margin:48px auto 0;background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:48px 36px}
-    .clinks{display:flex;justify-content:center;gap:12px;margin-top:26px;flex-wrap:wrap}
-    .clink{display:inline-flex;align-items:center;gap:7px;padding:11px 18px;border-radius:10px;font-size:14px;font-weight:600;transition:all .2s;border:1px solid var(--border2);color:var(--text2);background:var(--surface)}
-    .clink:hover{border-color:var(--border);color:var(--text);transform:translateY(-2px)}
-    .clink-p{background:var(--brand);color:#fff;border-color:transparent}
-    .clink-p:hover{background:var(--brand2);color:#fff;box-shadow:0 8px 24px var(--glow)}
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
 
-    /* ── FOOTER ──────────────────────────────────────── */
-    footer{border-top:1px solid var(--border2);padding:28px 24px;text-align:center;font-size:13px;color:var(--text3)}
-    footer a{color:var(--text3)}footer a:hover{color:var(--text2)}
-
-    /* ── RESPONSIVE ──────────────────────────────────── */
-    @media(max-width:920px){
-      .hero-in{grid-template-columns:1fr;gap:40px}
-      .cwin{display:none}
-      .pillars{grid-template-columns:1fr}
-      .xp-cols{grid-template-columns:1fr}
-      .feat-in{grid-template-columns:1fr;gap:24px}
-      .pgrid{grid-template-columns:1fr}
-      .sg{grid-template-columns:repeat(2,1fr)}
-      .nav-links{display:none}
-      #hbtn{display:flex}
-    }
-    @media(max-width:560px){
-      .wrap{padding:0 16px}.section{padding:68px 0}
-      .stats-row{flex-wrap:wrap}.stat{min-width:45%}
-      .sg{grid-template-columns:1fr}
-      .ccard{padding:32px 20px}
-      .xp-card{padding:24px}
-      .feat{padding:26px}
-    }
-  </style>
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-code { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .exp-wrap { grid-template-columns: 1fr; }
+    .exp-company { position: static; }
+    .featured-project { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr 1fr; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .stats-strip { gap: 24px; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 64px 0; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
 
-<!-- ── NAV ─────────────────────────────────────────── -->
-<nav id="nav">
-  <div class="nav-in">
-    <a class="nav-logo" href="#hero">
-      <div class="logo-sq">SK</div>
-      <span>Shraddha Kesarwani</span>
-    </a>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <div class="nav-right">
-      <a class="btn btn-o" href="https://github.com/shraddha-999" target="_blank" rel="noopener" style="padding:7px 12px;font-size:13px">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        GitHub
-      </a>
-      <button id="tbtn" aria-label="Toggle theme">🌙</button>
-      <button id="hbtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-    </div>
-  </div>
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">shraddha<span>.dev</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="theme-btn" id="themeBtn" title="Toggle theme">&#9728;&#65039;</button>
 </nav>
 
-<!-- ── MOBILE MENU ───────────────────────────────────── -->
-<div id="mmenu">
-  <a href="#about">About</a>
-  <a href="#experience">Experience</a>
-  <a href="#projects">Projects</a>
-  <a href="#skills">Skills</a>
-  <a href="#contact">Contact</a>
-</div>
-
-<!-- ── HERO ─────────────────────────────────────────── -->
+<!-- HERO -->
 <section id="hero">
-  <div class="grid-bg"></div>
-  <div class="hero-glow"></div>
-  <div class="wrap">
-    <div class="hero-in">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">Available for new opportunities</div>
+      <h1 class="hero-name">Shraddha<br><span class="highlight">Kesarwani</span></h1>
+      <p class="hero-title">Backend Engineer &middot; Payments &amp; Distributed Systems</p>
+      <p class="hero-desc">
+        3+ years building production systems at Vegrow &mdash; HSBC ISO 20022 payouts, Zoho ERP integration, multi-provider OCR pipelines, and Kafka-driven notification infrastructure. Comfortable across Ruby, Go, and Python.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="https://github.com/shraddha-999" target="_blank" rel="noopener" class="btn btn-ghost">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+        <a href="mailto:shraddha.kesarwani@vegrow.in" class="btn btn-ghost">Email Me</a>
+      </div>
+      <div class="stats-strip">
+        <div class="stat-item">
+          <div class="stat-value"><span class="accent" id="commitCounter">5862</span></div>
+          <div class="stat-label">Total Commits</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">7</div>
+          <div class="stat-label">Repos Shipped</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">3<span class="accent">+</span></div>
+          <div class="stat-label">Years at Vegrow</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-code">
+      <div class="code-bar">
+        <div class="code-dots">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        </div>
+        <div class="code-title">cibil_score_calculator.rb</div>
+      </div>
+      <div class="code-body">
+<span class="c-kw">class</span> <span class="c-type">CibilScoreCalculator</span>
+  <span class="c-type">TARGET_MAX</span>     = <span class="c-num">15</span>
+  <span class="c-type">MIN_TO_PROCEED</span> = <span class="c-num">10</span>
+
+  <span class="c-type">SECTION_WEIGHTS</span> = {
+    <span class="c-str">cibil_score:</span>         <span class="c-num">0.67</span>,
+    <span class="c-str">active_loans:</span>        <span class="c-num">0.50</span>,
+    <span class="c-str">worst_dpd:</span>           <span class="c-num">1.67</span>,
+    <span class="c-str">enquiries:</span>           <span class="c-num">1.17</span>,
+    <span class="c-str">settlement_writeoff:</span> <span class="c-num">0.17</span>,
+    <span class="c-str">micro_loans:</span>         <span class="c-num">0.83</span>,
+  }.freeze
+
+  <span class="c-cmt"># Hard decline on Active NPA or Write-off/Settlement</span>
+  <span class="c-kw">def</span> <span class="c-fn">hard_decline?</span>
+    active_npa? || writeoff_or_settlement?
+  <span class="c-kw">end</span>
+
+  <span class="c-kw">def</span> <span class="c-fn">score_cibil_band</span>
+    <span class="c-kw">return</span> <span class="c-num"> 3</span> <span class="c-kw">if</span> cibil_score >= <span class="c-num">750</span>
+    <span class="c-kw">return</span> <span class="c-num"> 2</span> <span class="c-kw">if</span> cibil_score >= <span class="c-num">700</span>
+    <span class="c-kw">return</span> <span class="c-num"> 1</span> <span class="c-kw">if</span> cibil_score >= <span class="c-num">650</span>
+    <span class="c-kw">return</span> <span class="c-num">-1</span> <span class="c-kw">if</span> cibil_score &lt; <span class="c-num">600</span>
+    <span class="c-num">0</span>
+  <span class="c-kw">end</span>
+
+  <span class="c-kw">def</span> <span class="c-fn">proceed?</span>
+    !hard_decline? &amp;&amp; weighted_total >= <span class="c-type">MIN_TO_PROCEED</span>
+  <span class="c-kw">end</span>
+<span class="c-kw">end</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <p class="section-eyebrow reveal">About</p>
+    <h2 class="section-title reveal">Systems that move money, goods, and data</h2>
+    <p class="section-sub reveal">
+      I joined Vegrow in 2023 as part of the core platform team, building the systems that keep crore-scale payments, ERP data sync, and logistics intelligence running reliably.
+    </p>
+    <div class="about-grid">
+      <div class="pillar-card reveal reveal-delay-1">
+        <div class="pillar-icon">&#9881;&#65039;</div>
+        <h3 class="pillar-title">Payment Systems</h3>
+        <p class="pillar-desc">Built the HSBC ISO 20022 payout service handling batch NEFT/IMPS transfers with PGP-encrypted XML payloads. Integrated Zoho Books for bidirectional invoice and credit note sync across 20+ entity types.</p>
+      </div>
+      <div class="pillar-card reveal reveal-delay-2">
+        <div class="pillar-icon">&#128279;</div>
+        <h3 class="pillar-title">Data &amp; AI Pipelines</h3>
+        <p class="pillar-desc">Architected a FastAPI OCR service with pluggable LLM backends (OpenAI, Gemini, Claude) for document extraction, CIBIL credit scoring in Rails, and Aadhaar batch processing for 200+ farmers.</p>
+      </div>
+      <div class="pillar-card reveal reveal-delay-3">
+        <div class="pillar-icon">&#128225;</div>
+        <h3 class="pillar-title">Event-Driven Services</h3>
+        <p class="pillar-desc">Kafka-backed notification (Go 1.18) and OTP (Go 1.23 hexagonal) services routing Kaleyra SMS/WhatsApp. Gmail Pub/Sub push processor for real-time bank VA report ingestion from ICICI, HSBC, and SC.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <p class="section-eyebrow reveal">Experience</p>
+    <h2 class="section-title reveal">Where I've worked</h2>
+    <div class="exp-wrap">
+      <div class="exp-company reveal">
+        <div class="company-logo-area">
+          <div class="company-name">Vegrow</div>
+          <p class="company-tagline">B2B fresh produce supply chain platform connecting farmers to buyers across India.</p>
+          <div class="company-meta">
+            <div class="company-meta-row">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/><path fill-rule="evenodd" d="M8 0a8 8 0 100 16A8 8 0 008 0zM1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0z"/></svg>
+              Bengaluru, India
+            </div>
+            <div class="company-meta-row">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M1 8a7 7 0 1114 0A7 7 0 011 8zm7-4.75a.75.75 0 01.75.75V8a.75.75 0 01-.22.53l-1.25 1.25a.75.75 0 11-1.06-1.06L7.25 7.69V4a.75.75 0 01.75-.75z"/></svg>
+              Jan 2023 &ndash; Present
+            </div>
+          </div>
+          <div class="commit-pill">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm1.43.75a4.002 4.002 0 01-7.86 0H.75a.75.75 0 110-1.5h3.32a4.001 4.001 0 017.86 0h3.32a.75.75 0 110 1.5h-3.32z"/></svg>
+            5,862 commits
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-items">
+        <div class="exp-item reveal">
+          <div class="exp-period">Jan 2023 &ndash; Present &middot; Full-time</div>
+          <div class="exp-role">Software Engineer &mdash; Platform &amp; Payments</div>
+          <p class="exp-body">Core platform team owning the Ruby on Rails monolith (velynk), payment infrastructure, ERP integration, and several Go microservices. Led end-to-end delivery of the HSBC payout system and Zoho integration overhaul.</p>
+          <div class="tech-tags">
+            <span class="tag">Ruby on Rails</span>
+            <span class="tag green">Go 1.18&ndash;1.24</span>
+            <span class="tag orange">Python / FastAPI</span>
+            <span class="tag purple">Kafka</span>
+            <span class="tag">Redis</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag green">React / TypeScript</span>
+          </div>
+        </div>
+
+        <div class="exp-item reveal reveal-delay-1">
+          <div class="exp-period">Q1 2024 &ndash; Q2 2024</div>
+          <div class="exp-role">HSBC Payout Service (ups-payout-be)</div>
+          <p class="exp-body">Built the full-stack bank payout service from scratch in Go 1.24 + Gin. Generates ISO 20022 pain.001 XML batch files, PGP-encrypts and transmits to HSBC's API, tracks payment lifecycle via Kafka events. Handles NEFT and IMPS payment modes with per-batch audit trail, 7-day presigned S3 report downloads, manual override gate with a 48-hour cool-down (prevents pulling the trigger before HSBC naturally settles), and Google SSO for finance team access.</p>
+          <div class="tech-tags">
+            <span class="tag green">Go 1.24</span>
+            <span class="tag">Gin</span>
+            <span class="tag orange">ISO 20022 XML</span>
+            <span class="tag red">PGP Encryption</span>
+            <span class="tag purple">Kafka</span>
+            <span class="tag">MySQL / GORM</span>
+            <span class="tag">S3 Presigned URLs</span>
+            <span class="tag">Google SSO</span>
+          </div>
+        </div>
+
+        <div class="exp-item reveal reveal-delay-2">
+          <div class="exp-period">Q3 2023 &ndash; Q1 2024</div>
+          <div class="exp-role">Zoho Books ERP Integration (zohointegrationservice)</div>
+          <p class="exp-body">Refactored and extended the Go 1.23 bidirectional ERP sync. Handles invoices, bills, credit notes, vendor payments, customer payments, and outstanding reconciliation across global, India, and trading business units. Auto-applies trading credit notes with correct tax accounting. Structured failure remark logging with Slack alerts for finance team visibility.</p>
+          <div class="tech-tags">
+            <span class="tag green">Go 1.23</span>
+            <span class="tag">Zoho Books API</span>
+            <span class="tag orange">20+ entity types</span>
+            <span class="tag purple">Slack Webhooks</span>
+            <span class="tag">MySQL</span>
+          </div>
+        </div>
+
+        <div class="exp-item reveal reveal-delay-3">
+          <div class="exp-period">Q2 2024 &ndash; Q3 2024</div>
+          <div class="exp-role">OCR AI Service (ocr-service)</div>
+          <p class="exp-body">Built a FastAPI microservice exposing a model-agnostic task registry for document AI. Supports OpenAI, Gemini, and Claude backends via a single resolver. Tasks include shipping-bill booking difference checks and WhatsApp container info parsing (fuzzy location normalization across 14 cold-storage facilities with 30+ spelling variants). Logs every inference run to MongoDB with token cost tracking. Rails monolith bridges via OcrAiService with 3 s / 10 s open/read timeouts and graceful nil-on-failure.</p>
+          <div class="tech-tags">
+            <span class="tag orange">Python / FastAPI</span>
+            <span class="tag">OpenAI API</span>
+            <span class="tag">Gemini API</span>
+            <span class="tag purple">Claude API</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag green">Pydantic v2</span>
+          </div>
+        </div>
+
+        <div class="exp-item reveal">
+          <div class="exp-period">2023 &ndash; Ongoing</div>
+          <div class="exp-role">velynk Rails Monolith &mdash; Multiple Features</div>
+          <p class="exp-body">5,341 commits to the core Rails 3.3 monolith. Major contributions: <strong>CibilScoreCalculator</strong> (weighted credit-risk engine: TARGET_MAX=15, MIN_TO_PROCEED=10, 6 sections with configurable weights, DPD history mapped STD&#8594;0 through SUB/DBT/LOSS&#8594;200); <strong>AadharOcrExtractionService</strong> (batch KYC for 200+ farmers, ActiveStorage CSV output with 7-day presigned URLs); <strong>Apple CA operations</strong> (controlled-atmosphere cold-storage gate-in, grading, packaging, token &amp; chamber management); 100+ schema migrations.</p>
+          <div class="tech-tags">
+            <span class="tag red">Ruby on Rails 3.3</span>
+            <span class="tag">ActiveRecord</span>
+            <span class="tag orange">ActiveStorage</span>
+            <span class="tag">Sidekiq</span>
+            <span class="tag green">PostgreSQL</span>
+            <span class="tag">RSpec</span>
+          </div>
+        </div>
+
+        <div class="exp-item reveal reveal-delay-1">
+          <div class="exp-period">2023 &ndash; Ongoing</div>
+          <div class="exp-role">Notification, OTP &amp; Gmail Services</div>
+          <p class="exp-body">Maintained Go notification service (Kafka consumer &rarr; Kaleyra SMS/WhatsApp, domain-level rate limiting, swappable provider interface). Go 1.23 OTP service (hexagonal/ports-and-adapters architecture). Python Gmail Pub/Sub processor for ICICI, HSBC, and Standard Chartered bank VA report ingestion (CSV/ZIP) with history-ID deduplication and Slack failure alerts.</p>
+          <div class="tech-tags">
+            <span class="tag green">Go 1.18 / 1.23</span>
+            <span class="tag purple">Kafka / Sarama</span>
+            <span class="tag">Kaleyra API</span>
+            <span class="tag orange">Python / Flask</span>
+            <span class="tag">Google Pub/Sub</span>
+            <span class="tag">Gmail API</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="section-eyebrow reveal">Projects</p>
+    <h2 class="section-title reveal">Things I've built</h2>
+    <p class="section-sub reveal">Production systems at Vegrow and personal side projects.</p>
+
+    <!-- RateGuard featured -->
+    <div class="featured-project reveal">
       <div>
-        <div class="badge"><div class="dot"></div> Open to Backend Engineering Roles</div>
-        <h1 class="hero-name">Shraddha<br>Kesarwani</h1>
-        <p class="hero-role">Backend Software Engineer · <span>Ex-Vegrow</span></p>
-        <p class="hero-desc">I build distributed systems, financial platforms, and AI-powered document services that run at production scale — across Ruby on Rails, Python, and Go microservices.</p>
-        <div class="stats-row">
-          <div class="stat"><span class="v"><em>3</em>+</span><span class="l">Years Exp.</span></div>
-          <div class="stat"><span class="v"><em id="cc">5800</em>+</span><span class="l">Commits</span></div>
-          <div class="stat"><span class="v"><em>7</em>+</span><span class="l">Services</span></div>
-          <div class="stat"><span class="v"><em>4</em></span><span class="l">Languages</span></div>
+        <div class="proj-label">Personal Project &middot; Live Demo</div>
+        <h3 class="proj-title">RateGuard</h3>
+        <p class="proj-sub">Distributed Rate Limiter + SaaS Dashboard</p>
+        <p class="proj-desc">A production-ready distributed rate limiter with a full React 19 monitoring dashboard. Three algorithms &mdash; Fixed Window, Sliding Window Log, and Token Bucket &mdash; all backed by atomic Lua scripts in Redis (EVALSHA) for race-condition-free operation at any concurrency level.</p>
+        <ul class="proj-points">
+          <li>Atomic Lua scripts via EVALSHA &mdash; no WATCH/MULTI/EXEC overhead, correct under concurrent requests</li>
+          <li>In-memory Lua emulator for tests; 49 tests run at full speed without a Redis process</li>
+          <li>Strategy-pattern algorithm factory + hot-reload config via <code>PUT /config/{id}</code> with no restart</li>
+          <li>React 19 dashboard: real-time charts, algorithm visualizer, request simulator, Prometheus metrics, CSV log export</li>
+          <li>Free-tier deploy: Vercel (frontend) + Render (FastAPI) + Upstash Redis</li>
+        </ul>
+        <div class="tech-tags" style="margin-bottom:20px">
+          <span class="tag orange">Python / FastAPI</span>
+          <span class="tag red">Redis + Lua / EVALSHA</span>
+          <span class="tag green">React 19 / TypeScript</span>
+          <span class="tag">TanStack Query</span>
+          <span class="tag purple">Zustand</span>
+          <span class="tag">Recharts</span>
+          <span class="tag">Prometheus</span>
         </div>
-        <div class="hero-btns">
-          <a class="btn btn-p" href="#projects">View Projects <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          <a class="btn btn-o" href="https://github.com/shraddha-999" target="_blank" rel="noopener">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            GitHub
+        <div class="proj-links">
+          <a href="https://rate-limiter-silk.vercel.app/simulator" target="_blank" rel="noopener" class="proj-link">&#9650; Live Demo</a>
+          <a href="https://github.com/shraddha-999" target="_blank" rel="noopener" class="proj-link">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            Source
           </a>
-          <a class="btn btn-o" href="https://linkedin.com/in/shraddha-kesarwani" target="_blank" rel="noopener">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            LinkedIn
-          </a>
-          <a class="btn btn-o" href="resume.pdf" download>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-            Resume
-          </a>
         </div>
       </div>
-
-      <!-- Code window -->
-      <div class="cwin">
-        <div class="cbar">
-          <div class="cd r"></div><div class="cd y"></div><div class="cd g"></div>
-          <span class="cf">rate-limiter · POST /rate-limit/check</span>
-        </div>
-        <div class="cbody">
-          <pre><span class="cc"># Distributed rate limiter — atomic Lua + Redis</span>
-<span class="cp">❯</span> curl -X POST https://api/rate-limit/check \
-    -H <span class="cs">"X-API-Key: sk_prod_***"</span> \
-    -d <span class="cs">'{</span>
-      <span class="ck">"identifier"</span>: <span class="cs">"user_4291"</span>,
-      <span class="ck">"algorithm"</span>: <span class="cs">"sliding_window"</span>,
-      <span class="ck">"user_tier"</span>: <span class="cs">"premium"</span>
-    <span class="cs">}'</span>
-
-<span class="cok">HTTP/200 OK</span>
-<span class="cm">{</span>
-  <span class="ck">"allowed"</span>:     <span class="cb">true</span>,
-  <span class="ck">"remaining"</span>:   <span class="cn">847</span>,
-  <span class="ck">"limit"</span>:       <span class="cn">1000</span>,
-  <span class="ck">"reset_after"</span>: <span class="cn">42</span>,
-  <span class="ck">"algorithm"</span>:   <span class="cs">"sliding_window"</span>
-<span class="cm">}</span>
-
-<span class="cc"># 49 tests · 0 race conditions · live on Vercel</span>
-<span class="cc"># → rate-limiter-silk.vercel.app</span></pre>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── ABOUT ─────────────────────────────────────────── -->
-<section id="about" class="section">
-  <div class="wrap">
-    <span class="label reveal">About</span>
-    <h2 class="h2 reveal">Engineering that holds<br>when it counts</h2>
-    <p class="sub reveal">Backend-first engineer with 3+ years at Vegrow — an agritech marketplace — building the financial plumbing, document intelligence, and communication infrastructure behind a high-throughput produce platform. I care about correctness, observability, and systems that degrade gracefully under load.</p>
-    <div class="pillars">
-      <div class="pillar reveal d1">
-        <div class="pillar-icon pi-b">🏗️</div>
-        <h3>Distributed Backend Systems</h3>
-        <p>Designing and scaling production microservices in Ruby on Rails, FastAPI, and Go. Focused on atomicity, race-free concurrency, clean architecture (hexagonal/ports-and-adapters), and operational reliability.</p>
-        <div class="tags"><span class="tag">Ruby on Rails</span><span class="tag">FastAPI</span><span class="tag">Go</span><span class="tag">Redis</span></div>
-      </div>
-      <div class="pillar reveal d2">
-        <div class="pillar-icon pi-t">💳</div>
-        <h3>Finance & Integration Engineering</h3>
-        <p>Building ERP sync engines, payment reconciliation pipelines, ISO 20022 batch payments with PGP-encrypted bank payloads, and billing systems where data correctness is mission-critical.</p>
-        <div class="tags"><span class="tag t">PostgreSQL</span><span class="tag t">Zoho API</span><span class="tag t">HSBC · ISO 20022</span></div>
-      </div>
-      <div class="pillar reveal d3">
-        <div class="pillar-icon pi-v">🧠</div>
-        <h3>AI & Document Intelligence</h3>
-        <p>Applying multimodal LLMs (Claude, Gemini Vision) and classic OCR (Tesseract, AWS Textract) to automate structured extraction from real-world financial and identity documents at production scale.</p>
-        <div class="tags"><span class="tag v">Claude API</span><span class="tag v">Gemini Vision</span><span class="tag v">Tesseract</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── EXPERIENCE ─────────────────────────────────────── -->
-<section id="experience" class="section section-alt">
-  <div class="wrap">
-    <span class="label reveal">Experience</span>
-    <h2 class="h2 reveal">Where I've built</h2>
-    <div class="timeline">
-      <div class="xp reveal">
-        <div class="xp-dot"></div>
-        <div class="xp-card">
-          <div class="xp-head">
-            <div>
-              <div class="xp-co">Vegrow · Bengaluru, India</div>
-              <div class="xp-role">Software Engineer</div>
-              <div class="xp-meta">AgriTech · India's largest fresh produce B2B marketplace · Series B</div>
-            </div>
-            <div class="xp-period">Jan 2023 – 2026</div>
+      <div>
+        <div class="proj-code-block">
+          <div class="pcb-header">
+            <div class="pcb-lang-dot" style="background:#3fb950"></div>
+            sliding_window.py &mdash; Redis ZSET, atomic Lua
           </div>
+          <div class="pcb-body">
+<span class="c-type">SLIDING_WINDOW_LUA</span> = <span class="c-str">"""
+local key    = KEYS[1]
+local now    = tonumber(ARGV[1])
+local window = tonumber(ARGV[2])
+local limit  = tonumber(ARGV[3])
+local cutoff = now - window
 
-          <div class="impact-box">
-            <h4>📈 Contribution Snapshot</h4>
-            <div class="impact-row">
-              <div class="metric"><div class="v">5,800+</div><div class="l">Commits</div></div>
-              <div class="metric"><div class="v">7+</div><div class="l">Microservices</div></div>
-              <div class="metric"><div class="v">4</div><div class="l">Languages</div></div>
-              <div class="metric"><div class="v">3 yrs</div><div class="l">Tenure</div></div>
-            </div>
-          </div>
+redis.call('ZREMRANGEBYSCORE', key, 0, cutoff)
+local count = redis.call('ZCARD', key)
+if count &lt; limit then
+    redis.call('ZADD', key, now, now)
+    redis.call('EXPIRE', key, window)
+    return {1, limit - count - 1}
+end
+return {0, 0}
+"""</span>
 
-          <div class="xp-cols">
-            <div class="xp-col">
-              <h4>Backend & Platform</h4>
-              <ul class="xp-ul">
-                <li><strong>Core Rails Monolith (Velynk):</strong> 4,000+ commits across trading, finance, outstanding management, Apple CA cold-storage billing, MSME compliance, and CIBIL credit-risk scoring engine.</li>
-                <li><strong>Financial Integration Engine (Go):</strong> Bidirectional Zoho ERP sync for invoices, bills, and credit notes across India/global/trading entities. Hardened with structured error logging, fallback logic, and Slack incident alerting.</li>
-                <li><strong>Bank Payment Ingestion (Python):</strong> Gmail-attached VA bank report pipeline (CSV/ZIP, ICICI hourly) with multi-format parser, retry logic, source tagging, and Slack failure alerts.</li>
-                <li><strong>Payout Service (Go, Gin):</strong> ISO 20022 batch payments to HSBC with PGP-encrypted payloads, Kafka event dispatch, and MySQL-backed partner payment lifecycle management.</li>
-              </ul>
-            </div>
-            <div class="xp-col">
-              <h4>AI, Infra & Communications</h4>
-              <ul class="xp-ul">
-                <li><strong>Document Intelligence Platform (Python/FastAPI):</strong> Multi-provider OCR — Tesseract → AWS Textract → Claude/Gemini Vision — with 7-step image preprocessing and LLM-driven structured extraction for CIBIL reports, Aadhaar, PAN, shipping bills.</li>
-                <li><strong>OTP Verification Service (Go):</strong> Hexagonal architecture; Kaleyra SMS delivery; sub-user event flows; invoice-date-aware templates. Added WhatsApp OTP integration routed through notification service.</li>
-                <li><strong>Notification Service (Go, Kafka):</strong> Multi-channel messaging (SMS via Kaleyra, WhatsApp) with swappable provider interface, domain-level rate limiting, and Kafka-based event dispatch for payment links, Apple CA events, and sub-user onboarding.</li>
-                <li><strong>Apple CA Frontend (React + TypeScript + OTel):</strong> High-density operational UI for cold-storage token/bin/GRN/packaging/billing workflows with browser-side OpenTelemetry trace export to OTLP endpoint.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="tags">
-            <span class="tag">Ruby on Rails 3.3</span>
-            <span class="tag">Go 1.20–1.24</span>
-            <span class="tag">Python · FastAPI</span>
-            <span class="tag">React · TypeScript</span>
-            <span class="tag t">PostgreSQL · MySQL</span>
-            <span class="tag t">Redis · MongoDB</span>
-            <span class="tag t">Kafka</span>
-            <span class="tag v">AWS S3 · EC2 · Textract</span>
-            <span class="tag v">Claude · Gemini Vision</span>
-            <span class="tag a">ISO 20022 · PGP</span>
-            <span class="tag">Docker · Jenkins</span>
-            <span class="tag">Sentry · New Relic · OpenTelemetry</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── PROJECTS ───────────────────────────────────────── -->
-<section id="projects" class="section">
-  <div class="wrap">
-    <span class="label reveal">Projects</span>
-    <h2 class="h2 reveal">What I've shipped</h2>
-    <p class="sub reveal">From open-source infrastructure tools to production services handling financial data for thousands of operations daily.</p>
-
-    <!-- Featured -->
-    <div class="feat reveal">
-      <div class="feat-in">
-        <div>
-          <div class="pstatus ps-open"><span class="ps-dot"></span> Open Source · Live Demo</div>
-          <div class="ptitle-lg">RateGuard — Distributed Rate Limiter</div>
-          <p class="pdesc">Production-grade HTTP rate limiter with three algorithm implementations, atomic Redis Lua scripts, Prometheus observability, and a full React 19 SaaS dashboard with real-time charts and a request simulator.</p>
-          <div class="pchallenge">
-            <h5>⚠ The Challenge</h5>
-            <p>Concurrent rate-limit checks create race conditions where multiple in-flight requests can all observe "quota available" before any write commits — silently breaking the limit guarantee under load.</p>
-          </div>
-          <div class="psolution">
-            <h5>✓ The Solution</h5>
-            <p>All three algorithms (Fixed Window, Sliding Window Log, Token Bucket) use atomic Lua scripts executed via Redis EVALSHA — the entire read-modify-write cycle is a single Redis operation. 49 tests pass including thread-safety and concurrency stress tests with zero race conditions observed.</p>
-          </div>
-          <div class="tags" style="margin-bottom:20px">
-            <span class="tag">Python · FastAPI</span>
-            <span class="tag">Redis · Lua</span>
-            <span class="tag">React 19 · TypeScript</span>
-            <span class="tag t">Prometheus · Grafana</span>
-            <span class="tag">Docker Compose</span>
-          </div>
-          <div class="plinks">
-            <a class="plink plink-p" href="https://rate-limiter-silk.vercel.app/simulator" target="_blank" rel="noopener">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>
-              Live Demo
-            </a>
-            <a class="plink" href="https://github.com/shraddha-999/rate-limiter" target="_blank" rel="noopener">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              Source Code
-            </a>
-          </div>
-        </div>
-        <div>
-          <div class="arch-box">
-            <h5>Architecture highlights</h5>
-            <div class="arch-item">
-              <div class="arch-ic b">⚡</div>
-              <p><strong>3 algorithms</strong> — Fixed Window (HASH+TTL), Sliding Window (ZSET log), Token Bucket (HMGET/HMSET) — each switchable per API config with hot-reload</p>
-            </div>
-            <div class="arch-item">
-              <div class="arch-ic t">🔒</div>
-              <p><strong>Atomic Lua via EVALSHA</strong> — race-free under any concurrency. No WATCH/MULTI/EXEC, no extra round-trips, no missed decrements</p>
-            </div>
-            <div class="arch-item">
-              <div class="arch-ic v">📊</div>
-              <p><strong>Full SaaS dashboard</strong> — 9 pages: real-time charts, animated algorithm visualizer, request simulator (1–1000 req), Prometheus metrics parser, CSV export</p>
-            </div>
-            <div class="arch-item">
-              <div class="arch-ic g">✓</div>
-              <p><strong>49 tests</strong> — unit + integration + concurrency stress. Clean Architecture: Repository + Strategy patterns, DI-swappable Redis / in-memory backends</p>
-            </div>
+<span class="c-kw">async def</span> <span class="c-fn">check</span>(self, key, window, limit):
+    now = <span class="c-fn">int</span>(time.time() * <span class="c-num">1000</span>)
+    allowed, remaining = <span class="c-kw">await</span> self.redis.evalsha(
+        self.sha, <span class="c-num">1</span>, key, now, window, limit
+    )
+    <span class="c-kw">return</span> <span class="c-type">RateLimitResult</span>(
+        allowed=<span class="c-fn">bool</span>(allowed),
+        remaining=remaining,
+    )
           </div>
         </div>
       </div>
     </div>
 
     <!-- Grid -->
-    <div class="pgrid">
-
-      <!-- OCR -->
-      <div class="pcard reveal d1">
-        <div class="pstatus ps-prod"><span class="ps-dot"></span> Production · Vegrow</div>
-        <div class="ptitle">Document Intelligence Platform</div>
-        <p class="pdesc">Multi-provider OCR microservice automating structured data extraction from CIBIL credit reports, Aadhaar, PAN, driving licences, Apple CA bills, and shipping documents.</p>
-        <div class="pchallenge">
-          <h5>⚠ Challenge</h5>
-          <p>Scanned Indian financial and identity documents have skewed images, varied layouts, and mixed scripts — single-engine OCR produced accuracy too low for automated processing.</p>
+    <div class="projects-grid">
+      <div class="proj-card reveal">
+        <div class="proj-card-icon">&#128179;</div>
+        <div class="proj-card-lang">Go 1.24 &middot; Vegrow</div>
+        <h3 class="proj-card-title">HSBC Payout Service</h3>
+        <p class="proj-card-desc">Batch payment engine generating ISO 20022 pain.001 XML for NEFT/IMPS. PGP-encrypted payloads transmitted to HSBC. Full lifecycle via Kafka events, 7-day S3 audit downloads, 48-hour manual override cool-down.</p>
+        <div class="proj-card-footer">
+          <span class="tag green">Go + Gin</span>
+          <span class="tag orange">ISO 20022</span>
+          <span class="tag red">PGP</span>
+          <span class="tag purple">Kafka</span>
         </div>
-        <div class="psolution">
-          <h5>✓ Solution</h5>
-          <p>Three-tier provider cascade (Tesseract → AWS Textract → Claude/Gemini Vision) with a 7-step preprocessing pipeline (skew correction, binarization, noise removal) and <span class="mono" style="font-size:11px">instructor</span>-enforced JSON extraction. MongoDB audit trail + async S3 upload + OpenTelemetry tracing.</p>
-        </div>
-        <div class="tags" style="margin-bottom:16px">
-          <span class="tag">Python · FastAPI</span>
-          <span class="tag v">Claude · Gemini Vision</span>
-          <span class="tag t">AWS Textract</span>
-          <span class="tag t">MongoDB · S3</span>
-          <span class="tag">OpenTelemetry</span>
-        </div>
-        <div class="plinks"><span class="plink" style="cursor:default;opacity:.55">🔒 Private · Production</span></div>
       </div>
 
-      <!-- Zoho / Finance -->
-      <div class="pcard reveal d2">
-        <div class="pstatus ps-prod"><span class="ps-dot"></span> Production · Vegrow</div>
-        <div class="ptitle">Financial Integration Engine</div>
-        <p class="pdesc">Go microservice bidirectionally syncing business transactions with Zoho ERP — invoices, bills, credit notes, outstanding corrections across India, global, and trading entity types.</p>
-        <div class="pchallenge">
-          <h5>⚠ Challenge</h5>
-          <p>Silent partial failures, complex multi-entity field mappings, and untracked sync errors left finance teams with mismatched ledgers requiring hours of manual reconciliation.</p>
+      <div class="proj-card reveal reveal-delay-1">
+        <div class="proj-card-icon">&#128260;</div>
+        <div class="proj-card-lang">Go 1.23 &middot; Vegrow</div>
+        <h3 class="proj-card-title">Zoho Books ERP Sync</h3>
+        <p class="proj-card-desc">Bidirectional sync between velynk and Zoho Books. Invoices, bills, credit notes, vendor &amp; customer payments across 3 business units. Auto-applies credit notes with tax accounting. Failure remark logging + Slack alerts.</p>
+        <div class="proj-card-footer">
+          <span class="tag green">Go 1.23</span>
+          <span class="tag">Zoho API</span>
+          <span class="tag orange">20+ entities</span>
         </div>
-        <div class="psolution">
-          <h5>✓ Solution</h5>
-          <p>Structured failure remark logging, per-entity fallback logic, Slack alerts on errors, trading credit note auto-apply with tax handling, and MSME/Udyam vendor data enrichment. 156+ commits iteratively hardening reliability.</p>
-        </div>
-        <div class="tags" style="margin-bottom:16px">
-          <span class="tag">Go 1.23</span>
-          <span class="tag t">Zoho API</span>
-          <span class="tag t">PostgreSQL</span>
-          <span class="tag">Slack API · Docker</span>
-        </div>
-        <div class="plinks"><span class="plink" style="cursor:default;opacity:.55">🔒 Private · Production</span></div>
       </div>
 
-      <!-- Payout -->
-      <div class="pcard reveal d3">
-        <div class="pstatus ps-prod"><span class="ps-dot"></span> Production · Vegrow</div>
-        <div class="ptitle">Bank Payout Service</div>
-        <p class="pdesc">Go/Gin microservice processing partner payouts via HSBC bank integration — ISO 20022 batch payment files, PGP-encrypted payloads, Kafka event dispatch, and presigned S3 document storage.</p>
-        <div class="pchallenge">
-          <h5>⚠ Challenge</h5>
-          <p>Bank communication required signed, encrypted payment batches conforming to ISO 20022 standards — a non-trivial integration with strict format and security requirements.</p>
+      <div class="proj-card reveal reveal-delay-2">
+        <div class="proj-card-icon">&#129302;</div>
+        <div class="proj-card-lang">Python / FastAPI &middot; Vegrow</div>
+        <h3 class="proj-card-title">OCR AI Service</h3>
+        <p class="proj-card-desc">Model-agnostic document AI microservice. Task registry dispatches to OpenAI, Gemini, or Claude. Shipping-bill diff checks, WhatsApp container parsing with fuzzy location normalization (14 cold-storage sites, 30+ spelling variants). MongoDB cost-per-inference logging.</p>
+        <div class="proj-card-footer">
+          <span class="tag orange">FastAPI</span>
+          <span class="tag purple">OpenAI/Gemini/Claude</span>
+          <span class="tag">MongoDB</span>
         </div>
-        <div class="psolution">
-          <h5>✓ Solution</h5>
-          <p>PGP encryption layer for outbound HSBC payloads, ISO 20022 batch file generation, Kafka for async p2p service events, Google SSO via Velynk, and 7-day presigned GET URLs for payment proof documents.</p>
-        </div>
-        <div class="tags" style="margin-bottom:16px">
-          <span class="tag">Go 1.24 · Gin</span>
-          <span class="tag a">ISO 20022 · PGP</span>
-          <span class="tag t">Kafka · MySQL</span>
-          <span class="tag">AWS S3</span>
-        </div>
-        <div class="plinks"><span class="plink" style="cursor:default;opacity:.55">🔒 Private · Production</span></div>
       </div>
 
-      <!-- OTP + Notification -->
-      <div class="pcard reveal d4">
-        <div class="pstatus ps-prod"><span class="ps-dot"></span> Production · Vegrow</div>
-        <div class="ptitle">OTP & Notification Services</div>
-        <p class="pdesc">Two Go microservices — OTP (Hexagonal Architecture, Kaleyra SMS) for transaction verification and Notifications (Kafka, SMS + WhatsApp) for customer communication — with 65 + 58 production commits.</p>
-        <div class="pchallenge">
-          <h5>⚠ Challenge</h5>
-          <p>Messages had to be context-aware across delivery channel, sub-user type, invoice metadata, and workflow source — hardcoded templates broke constantly as the platform evolved.</p>
+      <div class="proj-card reveal reveal-delay-3">
+        <div class="proj-card-icon">&#127968;</div>
+        <div class="proj-card-lang">Ruby on Rails &middot; Vegrow</div>
+        <h3 class="proj-card-title">CIBIL Credit Risk Engine</h3>
+        <p class="proj-card-desc">Weighted credit-risk scoring for farmer loan eligibility. 6 weighted sections (TARGET_MAX=15, MIN_TO_PROCEED=10). Hard-decline on Active NPA / Write-off. DPD penalty: STD&#8594;0, SMA0&#8594;15, SMA2&#8594;75, LOSS&#8594;200. Supports individual and corporate CIBIL report types.</p>
+        <div class="proj-card-footer">
+          <span class="tag red">Ruby</span>
+          <span class="tag">CIBIL API</span>
+          <span class="tag orange">Credit Risk</span>
         </div>
-        <div class="psolution">
-          <h5>✓ Solution</h5>
-          <p>OTP service uses Ports & Adapters for clean channel abstraction. Notification service uses Kafka events with domain-level rate limiting and swappable provider interface. Added <span class="mono" style="font-size:11px">created_source</span>-aware routing, invoice-date-sensitive templates, and sub-user event plumbing.</p>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-card-icon">&#127977;</div>
+        <div class="proj-card-lang">React + TypeScript &middot; Vegrow</div>
+        <h3 class="proj-card-title">Apple CA Operations</h3>
+        <p class="proj-card-desc">Ops dashboard for controlled-atmosphere cold storage. Gate-in, grading, packaging, token management, chamber monitoring, sales. Browser-side OpenTelemetry traces exported to SigNoz. User-interaction instrumentation disabled to prevent MutationObserver leak on barcode-heavy screens.</p>
+        <div class="proj-card-footer">
+          <span class="tag green">React + MUI v5</span>
+          <span class="tag purple">OpenTelemetry</span>
+          <span class="tag">SigNoz</span>
         </div>
-        <div class="tags" style="margin-bottom:16px">
-          <span class="tag">Go · Hexagonal Arch</span>
-          <span class="tag t">Kafka</span>
-          <span class="tag">Kaleyra SMS</span>
-          <span class="tag">WhatsApp API · Sentry</span>
+      </div>
+
+      <div class="proj-card reveal reveal-delay-1">
+        <div class="proj-card-icon">&#128233;</div>
+        <div class="proj-card-lang">Python / Flask &middot; Vegrow</div>
+        <h3 class="proj-card-title">Gmail Bank VA Processor</h3>
+        <p class="proj-card-desc">Google Cloud Pub/Sub Gmail push subscriber. Processes ICICI, HSBC, and Standard Chartered VA credit reports (CSV/ZIP). History-ID deduplication prevents double-processing. Retry logic, multi-format parser, Slack failure alerts. ICICI runs hourly.</p>
+        <div class="proj-card-footer">
+          <span class="tag orange">Python / Flask</span>
+          <span class="tag">Google Pub/Sub</span>
+          <span class="tag">ICICI / HSBC / SC</span>
         </div>
-        <div class="plinks"><span class="plink" style="cursor:default;opacity:.55">🔒 Private · Production</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── SKILLS ─────────────────────────────────────────── -->
-<section id="skills" class="section section-alt">
-  <div class="wrap">
-    <span class="label reveal">Skills</span>
-    <h2 class="h2 reveal">Tech I work with</h2>
-    <p class="sub reveal">Languages, frameworks, and tools used in production — not tutorial projects.</p>
-    <div class="sg">
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-eyebrow reveal">Skills</p>
+    <h2 class="section-title reveal">Technical toolkit</h2>
+    <div class="skills-grid">
 
-      <div class="sgroup reveal">
-        <h3>Languages</h3>
-        <div class="stags">
-          <span class="stag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt=""> Python</span>
-          <span class="stag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ruby/ruby-original.svg" alt=""> Ruby</span>
-          <span class="stag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg" alt=""> Go</span>
-          <span class="stag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt=""> TypeScript</span>
-          <span class="stag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt=""> JavaScript</span>
-          <span class="stag">SQL</span>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Languages</div>
+        <div class="skill-items">
+          <div class="skill-item"><span class="skill-name">Ruby</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.92"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Go</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.82"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Python</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.78"></div></div></div>
+          <div class="skill-item"><span class="skill-name">TypeScript</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.70"></div></div></div>
+          <div class="skill-item"><span class="skill-name">SQL</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.85"></div></div></div>
         </div>
       </div>
 
-      <div class="sgroup reveal d1">
-        <h3>Frameworks</h3>
-        <div class="stags">
-          <span class="stag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rails/rails-plain.svg" alt=""> Ruby on Rails</span>
-          <span class="stag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg" alt=""> FastAPI</span>
-          <span class="stag">Go · Gin</span>
-          <span class="stag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" alt=""> Flask</span>
-          <span class="stag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt=""> React</span>
+      <div class="skill-group reveal reveal-delay-1">
+        <div class="skill-group-title">Frameworks</div>
+        <div class="skill-items">
+          <div class="skill-item"><span class="skill-name">Ruby on Rails</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.92"></div></div></div>
+          <div class="skill-item"><span class="skill-name">FastAPI</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.80"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Gin (Go)</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.78"></div></div></div>
+          <div class="skill-item"><span class="skill-name">React / TypeScript</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.70"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Flask</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.65"></div></div></div>
         </div>
       </div>
 
-      <div class="sgroup reveal d2">
-        <h3>Databases</h3>
-        <div class="stags">
-          <span class="stag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt=""> PostgreSQL</span>
-          <span class="stag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg" alt=""> Redis</span>
-          <span class="stag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" alt=""> MongoDB</span>
-          <span class="stag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt=""> MySQL</span>
+      <div class="skill-group reveal reveal-delay-2">
+        <div class="skill-group-title">Data &amp; Messaging</div>
+        <div class="skill-items">
+          <div class="skill-item"><span class="skill-name">MySQL / PostgreSQL</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.88"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Redis</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.82"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Apache Kafka</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.75"></div></div></div>
+          <div class="skill-item"><span class="skill-name">MongoDB</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.68"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Sidekiq / Background Jobs</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.80"></div></div></div>
         </div>
       </div>
 
-      <div class="sgroup reveal d1">
-        <h3>Cloud & DevOps</h3>
-        <div class="stags">
-          <span class="stag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt=""> AWS</span>
-          <span class="stag">S3 · EC2 · Lambda</span>
-          <span class="stag">AWS Textract</span>
-          <span class="stag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt=""> Docker</span>
-          <span class="stag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg" alt=""> Jenkins</span>
-          <span class="stag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg" alt=""> GitHub Actions</span>
-          <span class="stag">Kafka</span>
+      <div class="skill-group reveal reveal-delay-3">
+        <div class="skill-group-title">Cloud &amp; Infra</div>
+        <div class="skill-items">
+          <div class="skill-item"><span class="skill-name">AWS S3 / Presigned URLs</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.80"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Google Cloud Pub/Sub</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.72"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Docker / Compose</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.78"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Prometheus / Grafana</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.65"></div></div></div>
+          <div class="skill-item"><span class="skill-name">OpenTelemetry / SigNoz</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.62"></div></div></div>
         </div>
       </div>
 
-      <div class="sgroup reveal d2">
-        <h3>AI / ML</h3>
-        <div class="stags">
-          <span class="stag">Claude API</span>
-          <span class="stag">Gemini Vision</span>
-          <span class="stag">OpenAI API</span>
-          <span class="stag">LiteLLM</span>
-          <span class="stag">Tesseract OCR</span>
-          <span class="stag">LLaVA</span>
-          <span class="stag">instructor</span>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">APIs &amp; Integrations</div>
+        <div class="skill-items">
+          <div class="skill-item"><span class="skill-name">HSBC ISO 20022 / PGP</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.85"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Zoho Books API</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.88"></div></div></div>
+          <div class="skill-item"><span class="skill-name">OpenAI / Gemini / Claude</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.75"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Gmail API / Pub/Sub</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.72"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Kaleyra SMS / WhatsApp</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.78"></div></div></div>
         </div>
       </div>
 
-      <div class="sgroup reveal d3">
-        <h3>Observability</h3>
-        <div class="stags">
-          <span class="stag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prometheus/prometheus-original.svg" alt=""> Prometheus</span>
-          <span class="stag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/grafana/grafana-original.svg" alt=""> Grafana</span>
-          <span class="stag">OpenTelemetry</span>
-          <span class="stag">Sentry</span>
-          <span class="stag">New Relic</span>
-          <span class="stag">Structured Logging</span>
-          <span class="stag">Slack Alerts</span>
+      <div class="skill-group reveal reveal-delay-1">
+        <div class="skill-group-title">Practices</div>
+        <div class="skill-items">
+          <div class="skill-item"><span class="skill-name">Clean / Hexagonal Architecture</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.80"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Event-Driven Design</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.82"></div></div></div>
+          <div class="skill-item"><span class="skill-name">RSpec / pytest</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.80"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Database Migrations</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.90"></div></div></div>
+          <div class="skill-item"><span class="skill-name">REST API Design</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:0.88"></div></div></div>
         </div>
       </div>
 
@@ -705,111 +795,121 @@
   </div>
 </section>
 
-<!-- ── CONTACT ───────────────────────────────────────── -->
-<section id="contact" class="section">
-  <div class="wrap">
-    <span class="label reveal" style="justify-content:center">Contact</span>
-    <h2 class="h2 reveal" style="text-align:center">Let's build something</h2>
-    <p class="sub reveal" style="text-align:center;margin:0 auto">Open to backend engineering roles in distributed systems, platform engineering, and AI infrastructure. Let's talk.</p>
-    <div class="ccard reveal">
-      <div style="font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:6px">Shraddha Kesarwani</div>
-      <div style="font-size:13.5px;color:var(--text2);margin-bottom:6px">Backend Software Engineer · Bengaluru, India</div>
-      <div class="mono" style="font-size:13px;color:var(--brand2)">shraddha.kesarwani@vegrow.in</div>
-      <div class="clinks">
-        <a class="clink clink-p" href="mailto:shraddha.kesarwani@vegrow.in">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Send Email
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal">
+        <p class="section-eyebrow">Contact</p>
+        <h2 class="section-title">Let's talk</h2>
+        <p style="color:var(--text2); font-size:15px; line-height:1.7; margin-top:12px; max-width:400px;">
+          Open to backend / full-stack roles with a focus on payments, distributed systems, or developer tooling. Happy to chat about interesting problems.
+        </p>
+      </div>
+      <div class="contact-links reveal reveal-delay-1">
+        <a href="mailto:shraddha.kesarwani@vegrow.in" class="contact-link">
+          <div class="contact-icon">&#128231;</div>
+          <div class="contact-text">
+            <strong>Email</strong>
+            <span>shraddha.kesarwani@vegrow.in</span>
+          </div>
         </a>
-        <a class="clink" href="https://github.com/shraddha-999" target="_blank" rel="noopener">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
+        <a href="https://github.com/shraddha-999" target="_blank" rel="noopener" class="contact-link">
+          <div class="contact-icon">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          </div>
+          <div class="contact-text">
+            <strong>GitHub</strong>
+            <span>github.com/shraddha-999</span>
+          </div>
         </a>
-        <a class="clink" href="https://linkedin.com/in/shraddha-kesarwani" target="_blank" rel="noopener">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          LinkedIn
-        </a>
-        <a class="clink" href="resume.pdf" download>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-          Resume
+        <a href="https://rate-limiter-silk.vercel.app/simulator" target="_blank" rel="noopener" class="contact-link">
+          <div class="contact-icon">&#128640;</div>
+          <div class="contact-text">
+            <strong>Live Demo &mdash; RateGuard</strong>
+            <span>rate-limiter-silk.vercel.app</span>
+          </div>
         </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── FOOTER ────────────────────────────────────────── -->
 <footer>
-  <div class="wrap">
-    <p>© 2026 Shraddha Kesarwani · <a href="https://github.com/shraddha-999/shraddha-999.github.io" target="_blank" rel="noopener">View source</a> · Hosted on GitHub Pages</p>
+  <div class="container">
+    Built with HTML + CSS &middot; No frameworks &middot; <a href="https://github.com/shraddha-999/shraddha-999.github.io" target="_blank" rel="noopener">View source</a> &middot; 2026
   </div>
 </footer>
 
 <script>
-  /* Theme */
-  const root = document.documentElement;
-  const tb = document.getElementById('tbtn');
-  const saved = localStorage.getItem('sk-theme') || 'dark';
-  root.setAttribute('data-theme', saved);
-  tb.textContent = saved === 'dark' ? '☀️' : '🌙';
-  tb.addEventListener('click', () => {
-    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    localStorage.setItem('sk-theme', next);
-    tb.textContent = next === 'dark' ? '☀️' : '🌙';
+  // Theme
+  const themeBtn = document.getElementById('themeBtn');
+  const html = document.documentElement;
+  const saved = localStorage.getItem('theme') || 'dark';
+  html.dataset.theme = saved;
+  themeBtn.textContent = saved === 'dark' ? '☀️' : '🌙';
+
+  themeBtn.addEventListener('click', () => {
+    const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
+    html.dataset.theme = next;
+    themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+    localStorage.setItem('theme', next);
   });
 
-  /* Mobile nav */
-  const hb = document.getElementById('hbtn');
-  const mm = document.getElementById('mmenu');
-  hb.addEventListener('click', () => {
-    const open = mm.classList.toggle('open');
-    hb.setAttribute('aria-expanded', open);
-  });
-  mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    mm.classList.remove('open'); hb.setAttribute('aria-expanded', false);
-  }));
-
-  /* Scroll reveal */
-  const ro = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); ro.unobserve(e.target); } });
-  }, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
-
-  /* Active nav */
-  const secs = document.querySelectorAll('section[id]');
-  const nls = document.querySelectorAll('.nav-links a');
-  const so = new IntersectionObserver(entries => {
+  // Scroll reveal
+  const revealObs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) nls.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // Skill bars
+  const skillObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        skillObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.skill-item').forEach(el => skillObs.observe(el));
+
+  // Active nav
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const navObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector('.nav-links a[href="#' + e.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
     });
   }, { threshold: 0.4 });
-  secs.forEach(s => so.observe(s));
+  document.querySelectorAll('section[id]').forEach(s => navObs.observe(s));
 
-  /* Commit counter animation */
-  function countUp(el, target, ms) {
-    const t0 = performance.now();
-    const tick = now => {
-      const p = Math.min((now - t0) / ms, 1);
-      const e = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(e * target).toLocaleString();
-      if (p < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
+  // Commit counter animation
+  function animateCounter(el, end, duration) {
+    const startTime = performance.now();
+    function step(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(end * eased).toLocaleString();
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
   }
-  const ccEl = document.getElementById('cc');
-  const ho = new IntersectionObserver(([e]) => {
-    if (e.isIntersecting) { countUp(ccEl, 5800, 1400); ho.disconnect(); }
+  const counterEl = document.getElementById('commitCounter');
+  const cObs = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      animateCounter(counterEl, 5862, 1600);
+      cObs.disconnect();
+    }
   }, { threshold: 0.5 });
-  ho.observe(document.getElementById('hero'));
-
-  /* Smooth scroll with nav offset */
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const id = a.getAttribute('href').slice(1);
-      const el = document.getElementById(id);
-      if (el) { e.preventDefault(); window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - 72, behavior: 'smooth' }); }
-    });
-  });
+  cObs.observe(counterEl);
 </script>
 </body>
 </html>
